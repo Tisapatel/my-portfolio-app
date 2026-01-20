@@ -1,0 +1,103 @@
+@import "tailwindcss";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/syne/500.css";
+@import "@fontsource/syne/600.css";
+@import "@fontsource/syne/700.css";
+
+@theme {
+  --font-body: "Inter", sans-serif;
+  --font-heading: "Syne", sans-serif;
+
+  --color-gradient: linear-gradient(
+    90deg,
+    #ff4d6d 0%,
+    #bd3eb2 25%,
+    #7b2ff7 50%,
+    #2f86f7 75%,
+    #2ff7ed 100%
+  );
+}
+
+@layer base {
+  body {
+    @apply bg-black text-white font-body text-xl overflow-x-hidden;
+  }
+}
+
+@layer components {
+  .main-container {
+    @apply max-w-[1600px] w-full mx-auto px-4 lg:px-12;
+  }
+
+  h1 {
+    position: relative;
+    display: inline-block;
+  }
+
+ h1::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 6px;
+    width: 100%;              
+    height: 8px;
+    background: var(--color-gradient);
+    z-index: -1;
+  }
+
+  h1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    width: 90%;
+    height: 2px;
+    background: var(--color-gradient);
+    z-index: -1;
+  }
+
+  .text-stroke {
+    -webkit-text-stroke: 1px white;
+    color: transparent;
+  }
+
+  .btn {
+    border: 2px solid transparent;
+    border-radius: 999px;
+    background:
+      linear-gradient(#000, #000) padding-box,
+      var(--color-gradient) border-box;
+    transition: all 0.3s ease;
+  }
+
+  .btn:hover {
+    background:
+      var(--color-gradient) padding-box,
+      var(--color-gradient) border-box;
+      color: white;
+  }
+
+  .btn-light {
+    background:
+      linear-gradient(#fff, #fff) padding-box,
+      var(--color-gradient) border-box;
+    color: black;
+  }
+}
+
+/* Circle rotation */
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 20s linear infinite;
+}
+
+@media (max-width: 1023px) {
+  h1::before {
+    bottom: 4px;
+  }
+}
