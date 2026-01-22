@@ -33,7 +33,8 @@ const Hero = () => {
           <GradientButton
             text="Let's Talk"
             link="mailto:tisapatel1204@gmail.com"
-            className="btn-light"
+            className="btn-light border border-white/50"
+            
           />
         </div>
 
