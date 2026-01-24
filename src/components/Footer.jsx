@@ -1,53 +1,293 @@
-import React from "react"
-import Logo from "../assets/images/logo.png"
-import { Github, Linkedin, Instagram, Mail, Facebook } from "lucide-react"
+import React, { useRef } from "react";
+import Logo from "../assets/images/logo.png";
+import { Github, Linkedin, Instagram, Mail, Facebook } from "lucide-react";
+
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const Footer = () => {
-  return (
-    <>
-      {/* Divider */}
-      <div className="max-w-[1500px] m-auto h-[1px] bg-white opacity-10"></div>
+  const footerRef = useRef(null);
 
-      <footer className="main-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 py-20">
+  useGSAP(() => {
+    const ctx = gsap.context(() => {
+      
+      // 📏 Top divider animation
+      gsap.fromTo(
+        ".footer-divider-top",
+        { 
+          scaleX: 0,
+          opacity: 0
+        },
+        {
+          scaleX: 1,
+          opacity: 0.1,
+          duration: 1.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".footer-divider-top",
+            start: "top 90%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+
+      // 🖼️ Logo animation
+      gsap.fromTo(
+        ".footer-logo",
+        { 
+          scale: 0,
+          opacity: 0,
+          rotation: -180
+        },
+        {
+          scale: 1,
+          opacity: 1,
+          rotation: 0,
+          duration: 1,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: ".footer-logo",
+            start: "top 85%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+
+      // 📋 Footer columns stagger animation
+      gsap.fromTo(
+        ".footer-column",
+        { 
+          y: 50,
+          opacity: 0
+        },
+        {
+          y: 0,
+          opacity: 1,
+          stagger: 0.15,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".footer-columns",
+            start: "top 80%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+
+      // 📝 Column headings animation
+      gsap.fromTo(
+        ".footer-heading",
+        { 
+          x: -30,
+          opacity: 0
+        },
+        {
+          x: 0,
+          opacity: 1,
+          stagger: 0.1,
+          duration: 0.6,
+          delay: 0.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".footer-columns",
+            start: "top 80%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+
+      // 🔗 Footer links stagger
+      gsap.fromTo(
+        ".footer-link",
+        { 
+          x: -20,
+          opacity: 0
+        },
+        {
+          x: 0,
+          opacity: 1,
+          stagger: 0.05,
+          duration: 0.5,
+          delay: 0.4,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".footer-columns",
+            start: "top 80%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+
+      // 📏 Bottom divider animation
+      gsap.fromTo(
+        ".footer-divider-bottom",
+        { 
+          scaleX: 0,
+          opacity: 0
+        },
+        {
+          scaleX: 1,
+          opacity: 0.1,
+          duration: 1.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".footer-divider-bottom",
+            start: "top 90%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+
+      // ©️ Copyright text animation
+      gsap.fromTo(
+        ".footer-copyright",
+        { 
+          y: 30,
+          opacity: 0
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".footer-copyright",
+            start: "top 90%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+
+      // 📱 Social icons animation
+      gsap.fromTo(
+        ".footer-social-icon",
+        { 
+          scale: 0,
+          opacity: 0,
+          rotation: 360
+        },
+        {
+          scale: 1,
+          opacity: 1,
+          rotation: 0,
+          stagger: 0.08,
+          duration: 0.6,
+          ease: "back.out(2)",
+          scrollTrigger: {
+            trigger: ".footer-social-icons",
+            start: "top 90%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+
+      // ✨ Interactive hover for social icons
+      const socialIcons = document.querySelectorAll('.footer-social-icon');
+      socialIcons.forEach(icon => {
+        icon.addEventListener('mouseenter', () => {
+          gsap.to(icon, {
+            scale: 1.15,
+            rotation: 360,
+            duration: 0.5,
+            ease: "back.out(1.7)"
+          });
+        });
+        
+        icon.addEventListener('mouseleave', () => {
+          gsap.to(icon, {
+            scale: 1,
+            rotation: 0,
+            duration: 0.5,
+            ease: "power2.out"
+          });
+        });
+      });
+
+      // 🎯 Interactive hover for footer links
+      const footerLinks = document.querySelectorAll('.footer-link a');
+      footerLinks.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+          gsap.to(link, {
+            x: 5,
+            duration: 0.3,
+            ease: "power2.out"
+          });
+        });
+        
+        link.addEventListener('mouseleave', () => {
+          gsap.to(link, {
+            x: 0,
+            duration: 0.3,
+            ease: "power2.out"
+          });
+        });
+      });
+
+    }, footerRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <div ref={footerRef}>
+      {/* Divider */}
+      <div className="footer-divider-top max-w-[1500px] m-auto h-[1px] bg-white opacity-10"></div>
+
+      <footer className="footer-columns main-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 py-20">
         
         {/* LOGO */}
-        <div>
+        <div className="footer-column">
           <img
             src={Logo}
             alt="Logo"
-            className="h-[80px] sm:h-[90px] md:h-[95px] lg:h-[100px] w-auto object-contain mb-6"
+            className="footer-logo h-[80px] sm:h-[90px] md:h-[95px] lg:h-[100px] w-auto object-contain mb-6"
           />
-          {/* <p className="text-gray-400 max-w-xs">
-            Creating modern, responsive and beautiful web experiences using
-            React, Tailwind & modern UI design.
-          </p> */}
         </div>
 
         {/* SERVICES */}
-        <div>
-          <h5 className="font-medium mb-5">Services</h5>
+        <div className="footer-column">
+          <h5 className="footer-heading font-medium mb-5">Services</h5>
           <ul className="flex flex-col gap-2 text-base lg:text-lg text-gray-400">
-            <li><a className="hover:text-[var(--grad-start)] transition" href="#">Web Development</a></li>
-            <li><a className="hover:text-[var(--grad-start)] transition" href="#">Full Stack</a></li>
-            <li><a className="hover:text-[var(--grad-start)] transition" href="#">UI/UX Design</a></li>
-            <li><a className="hover:text-[var(--grad-start)] transition" href="#">Portfolio Websites</a></li>
+            <li className="footer-link">
+              <a className="hover:text-[var(--grad-start)] transition" href="#">
+                Web Development
+              </a>
+            </li>
+            <li className="footer-link">
+              <a className="hover:text-[var(--grad-start)] transition" href="#">
+                Full Stack
+              </a>
+            </li>
+            <li className="footer-link">
+              <a className="hover:text-[var(--grad-start)] transition" href="#">
+                UI/UX Design
+              </a>
+            </li>
+            <li className="footer-link">
+              <a className="hover:text-[var(--grad-start)] transition" href="#">
+                Portfolio Websites
+              </a>
+            </li>
           </ul>
         </div>
 
         {/* ACCESSIBILITY */}
-        <div>
-          <h5 className="font-medium mb-5">Accessibility</h5>
+        <div className="footer-column">
+          <h5 className="footer-heading font-medium mb-5">Accessibility</h5>
           <ul className="flex flex-col gap-2 text-base lg:text-lg text-gray-400">
-            <li>Mon–Fri : 9:00 AM – 5:00 PM</li>
-            <li>24/7 WhatsApp & Email Support</li>
+            <li className="footer-link">Mon–Fri : 9:00 AM – 5:00 PM</li>
+            <li className="footer-link">24/7 WhatsApp & Email Support</li>
           </ul>
         </div>
 
         {/* CONTACT */}
-        <div>
-          <h5 className="font-medium mb-5">Contact</h5>
+        <div className="footer-column">
+          <h5 className="footer-heading font-medium mb-5">Contact</h5>
           <ul className="flex flex-col gap-2 text-base lg:text-lg text-gray-400">
-            <li>
+            <li className="footer-link">
               <a
                 className="hover:text-[var(--grad-start)] transition"
                 href="mailto:tisa1204@gmail.com"
@@ -55,7 +295,7 @@ const Footer = () => {
                 tisa1204@gmail.com
               </a>
             </li>
-            <li>
+            <li className="footer-link">
               <a
                 className="hover:text-[var(--grad-start)] transition"
                 href="tel:8799244003"
@@ -69,29 +309,30 @@ const Footer = () => {
       </footer>
 
       {/* Divider */}
-      <div className="max-w-[1500px] m-auto h-[1px] bg-white opacity-10"></div>
+      <div className="footer-divider-bottom max-w-[1500px] m-auto h-[1px] bg-white opacity-10"></div>
 
       {/* Bottom Bar */}
       <div className="main-container grid grid-cols-1 md:grid-cols-2 gap-4 py-6 lg:py-8 text-center md:text-left">
         
-        <div className="text-base lg:text-lg text-gray-400">
+        <div className="footer-copyright text-base lg:text-lg text-gray-400">
           © 2026 Tisa Patel | Frontend Developer. All Rights Reserved.
         </div>
 
         {/* SOCIAL ICONS */}
-        <div className="flex flex-wrap gap-4 justify-center md:justify-end">
+         
+        <div className="footer-social-icons flex flex-wrap gap-4 justify-center md:justify-end">
           {[
-            { Icon: Github, link: "https://github.com/yourusername" },
-            { Icon: Mail, link: "mailto:tisa1204@gmail.com" },
-            { Icon: Linkedin, link: "https://www.linkedin.com/in/yourusername" },
+            { Icon: Github, link: "https://github.com/Tisapatel" },
+            { Icon: Mail, link: "https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox" },
+            { Icon: Linkedin, link: "https://www.linkedin.com/in/tisa-patel-384b80312/" },
             { Icon: Facebook, link: "https://facebook.com/yourusername" },
-            { Icon: Instagram, link: "https://instagram.com/yourusername" },
+            { Icon: Instagram, link: "https://www.instagram.com/tissaa.004" },
           ].map(({ Icon, link }, i) => (
             <a
               key={i}
               href={link}
               target="_blank"
-              className="w-10 h-10 flex items-center justify-center rounded-xl 
+              className="footer-social-icon w-10 h-10 flex items-center justify-center rounded-xl 
               bg-white/5 border border-white/10 text-gray-300
               hover:text-[var(--grad-start)]
               hover:border-[var(--grad-start)]
@@ -104,8 +345,8 @@ const Footer = () => {
         </div>
 
       </div>
-    </>
-  )
-}
+    </div>
+  );
+};
 
-export default Footer
+export default Footer;

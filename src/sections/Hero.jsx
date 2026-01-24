@@ -95,9 +95,9 @@ const Hero = () => {
 
   return (
     <section
-  ref={heroRef}
-  className="min-h-screen pt-[100px] sm:pt-[120px] relative overflow-visible z-20"
->
+      ref={heroRef}
+      className="min-h-screen pt-[100px] sm:pt-[120px] relative overflow-visible z-10"
+    >
       <div className="main-container h-full flex flex-col-reverse lg:flex-row items-center justify-between gap-12 
        px-6 sm:px-10 lg:px-20">
 
@@ -123,7 +123,7 @@ const Hero = () => {
           <div className="flex justify-center lg:justify-start">
             <GradientButton
               text="Let's Talk"
-              link="mailto:tisapatel1204@gmail.com"
+              link="mail to:tisapatel1204@gmail.com"
               className="btn-light border border-white/50 hero-btn"
             />
           </div>
@@ -131,10 +131,8 @@ const Hero = () => {
 
        
        {/* RIGHT IMAGE */}
-<div className="w-full lg:w-[40%] relative flex justify-center lg:justify-end overflow-hidden">
-  <div className="relative flex justify-center lg:justify-center w-full max-w-md lg:max-w-lg">
-
-
+        <div className="w-full lg:w-[40%] relative flex justify-center lg:justify-end overflow-hidden">
+          <div className="relative flex justify-center lg:justify-center w-full max-w-md lg:max-w-lg">
 
             {/* Glow */}
             <div
@@ -142,12 +140,12 @@ const Hero = () => {
               style={{ background: "var(--color-gradient)" }}
             />
 
-           <img
-  src={heroCircle}
-  alt="Hero Graphic"
-  className="hero-img w-full max-w-[320px] sm:max-w-[380px] md:max-w-[450px] lg:max-w-[520px]
-             h-auto animate-spin-slow"
-/>
+            <img
+              src={heroCircle}
+              alt="Hero Graphic"
+              className="hero-img w-full max-w-[320px] sm:max-w-[380px] md:max-w-[450px] lg:max-w-[520px]
+                         h-auto animate-spin-slow"
+            />
           </div>
         </div>
 

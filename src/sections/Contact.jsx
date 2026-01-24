@@ -1,19 +1,247 @@
-import React from "react"
-import GradientButton from "../components/GradientButton"
-import { Github, Linkedin, Twitter, Instagram, Mail, MapPin } from "lucide-react"
+import React, { useRef } from "react";
+import GradientButton from "../components/GradientButton";
+import { Github, Linkedin, Twitter, Instagram, Mail, MapPin } from "lucide-react";
+
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SplitType from "split-type";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const Contact = () => {
+  const contactRef = useRef(null);
+
+  useGSAP(() => {
+    const ctx = gsap.context(() => {
+      
+      // 🎯 Heading animation with word split
+      const headingText = new SplitType(".contact-heading", { types: "words" });
+      
+      gsap.fromTo(
+        headingText.words,
+        { 
+          y: 100,
+          opacity: 0,
+          rotateX: -90
+        },
+        {
+          y: 0,
+          opacity: 1,
+          rotateX: 0,
+          stagger: 0.08,
+          duration: 0.8,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: ".contact-heading",
+            start: "top 85%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+
+      // 📝 Description animation
+      gsap.fromTo(
+        ".contact-description",
+        { 
+          y: 30,
+          opacity: 0
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          delay: 0.3,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".contact-description",
+            start: "top 85%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+
+      // 📋 Form animation - slide from left
+      gsap.fromTo(
+        ".contact-form",
+        { 
+          x: -100,
+          opacity: 0,
+          rotateY: -15
+        },
+        {
+          x: 0,
+          opacity: 1,
+          rotateY: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".contact-form",
+            start: "top 75%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+
+      // 📝 Form inputs stagger animation
+      gsap.fromTo(
+        ".form-input",
+        { 
+          x: -50,
+          opacity: 0
+        },
+        {
+          x: 0,
+          opacity: 1,
+          stagger: 0.15,
+          duration: 0.8,
+          delay: 0.3,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".contact-form",
+            start: "top 75%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+
+      // 🔘 Form button animation
+      gsap.fromTo(
+        ".form-button",
+        { 
+          scale: 0,
+          opacity: 0,
+          rotation: 180
+        },
+        {
+          scale: 1,
+          opacity: 1,
+          rotation: 0,
+          duration: 0.8,
+          delay: 0.8,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: ".contact-form",
+            start: "top 75%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+
+      // 💬 Info card animation - slide from right
+      gsap.fromTo(
+        ".contact-info",
+        { 
+          x: 100,
+          opacity: 0,
+          rotateY: 15
+        },
+        {
+          x: 0,
+          opacity: 1,
+          rotateY: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".contact-info",
+            start: "top 75%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+
+      // 📇 Info cards stagger
+      gsap.fromTo(
+        ".info-card",
+        { 
+          y: 30,
+          opacity: 0,
+          scale: 0.9
+        },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          stagger: 0.15,
+          duration: 0.6,
+          delay: 0.3,
+          ease: "back.out(1.4)",
+          scrollTrigger: {
+            trigger: ".contact-info",
+            start: "top 75%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+
+      // 📱 Social icons animation
+      gsap.fromTo(
+        ".social-icon",
+        { 
+          scale: 0,
+          opacity: 0,
+          rotation: 360
+        },
+        {
+          scale: 1,
+          opacity: 1,
+          rotation: 0,
+          stagger: 0.1,
+          duration: 0.6,
+          delay: 0.5,
+          ease: "back.out(2)",
+          scrollTrigger: {
+            trigger: ".social-icons",
+            start: "top 85%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+
+      // ✨ Interactive hover for social icons
+      const socialIcons = document.querySelectorAll('.social-icon');
+      socialIcons.forEach(icon => {
+        icon.addEventListener('mouseenter', () => {
+          gsap.to(icon, {
+            scale: 1.2,
+            rotation: 360,
+            duration: 0.5,
+            ease: "back.out(1.7)"
+          });
+        });
+        
+        icon.addEventListener('mouseleave', () => {
+          gsap.to(icon, {
+            scale: 1,
+            rotation: 0,
+            duration: 0.5,
+            ease: "power2.out"
+          });
+        });
+      });
+
+      return () => {
+        headingText.revert();
+      };
+    }, contactRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="min-h-screen bg-black flex items-center justify-center px-4 py-20">
+    <section 
+      ref={contactRef}
+      className="min-h-screen bg-black flex items-center justify-center px-4 py-20"
+    >
       <div className="max-w-6xl w-full">
         
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-white text-4xl md:text-5xl font-heading mb-4">
-            Let’s Work Together
+          <h1 className="contact-heading text-white text-4xl md:text-5xl font-heading mb-4">
+            Let's Work Together
           </h1>
-          <p className="text-gray-400 max-w-xl mx-auto">
-            Have a project in mind? Let’s discuss how we can bring your ideas to life.
+          <p className="contact-description text-gray-400 max-w-xl mx-auto">
+            Have a project in mind? Let's discuss how we can bring your ideas to life.
           </p>
         </div>
 
@@ -21,10 +249,10 @@ const Contact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           
           {/* FORM */}
-          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8">
+          <div className="contact-form bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8">
             <div className="space-y-6">
               
-              <div>
+              <div className="form-input">
                 <label className="text-gray-300 text-sm mb-1 block">Name</label>
                 <input
                   type="text"
@@ -33,7 +261,7 @@ const Contact = () => {
                 />
               </div>
 
-              <div>
+              <div className="form-input">
                 <label className="text-gray-300 text-sm mb-1 block">Email</label>
                 <input
                   type="email"
@@ -42,7 +270,7 @@ const Contact = () => {
                 />
               </div>
 
-              <div>
+              <div className="form-input">
                 <label className="text-gray-300 text-sm mb-1 block">Message</label>
                 <textarea
                   rows="5"
@@ -51,7 +279,7 @@ const Contact = () => {
                 />
               </div>
 
-              <div className="pt-4">
+              <div className="pt-4 form-button">
                 <GradientButton
                   text="Send Message"
                   link="#"
@@ -64,19 +292,19 @@ const Contact = () => {
           {/* INFO */}
           <div className="flex flex-col justify-between">
             
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 space-y-6">
+            <div className="contact-info bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 space-y-6 mb-6">
               <h2 className="text-white text-2xl font-heading">
-                Let’s Connect
+                Let's Connect
               </h2>
 
               <p className="text-gray-400">
-                I’m always open to discussing new projects, creative ideas, or
+                I'm always open to discussing new projects, creative ideas, or
                 opportunities to be part of your vision. Feel free to reach out!
               </p>
 
               {/* Cards */}
               <div className="space-y-4">
-                <div className="flex items-center gap-4 bg-black/40 border border-white/10 rounded-lg p-4">
+                <div className="info-card flex items-center gap-4 bg-black/40 border border-white/10 rounded-lg p-4">
                   <Mail className="w-6 h-6 text-[var(--grad-start)]" />
                   <div>
                     <p className="text-gray-400 text-sm">Email</p>
@@ -84,7 +312,7 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 bg-black/40 border border-white/10 rounded-lg p-4">
+                <div className="info-card flex items-center gap-4 bg-black/40 border border-white/10 rounded-lg p-4">
                   <MapPin className="w-6 h-6 text-[var(--grad-end)]" />
                   <div>
                     <p className="text-gray-400 text-sm">Location</p>
@@ -94,22 +322,23 @@ const Contact = () => {
               </div>
             </div>
 
-              <p className=" text-white-500 text-center lg:text-left">
-  Connect with me
-</p>
+            <p className="text-gray-400 text-center lg:text-left mb-4">
+              Connect with me
+            </p>
+            
             {/* SOCIALS */}
-            <div className="flex gap-4 justify-center lg:justify-start">
+            <div className="social-icons flex gap-4 justify-center lg:justify-start">
               {[ 
-                { Icon: Github, link: "https://github.com" },
-                { Icon: Linkedin, link: "https://linkedin.com" },
+                { Icon: Github, link: "https://github.com/Tisapatel" },
+                { Icon: Linkedin, link: "https://www.linkedin.com/in/tisa-patel-384b80312/" },
                 { Icon: Twitter, link: "https://twitter.com" },
-                { Icon: Instagram, link: "https://instagram.com" },
+                { Icon: Instagram, link: "https://www.instagram.com/tissaa.004" },
               ].map(({ Icon, link }, i) => (
                 <a
                   key={i}
                   href={link}
                   target="_blank"
-                  className="w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-gray-300
+                  className="social-icon w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-gray-300
                   hover:text-[var(--grad-start)]
                   hover:border-[var(--grad-start)]
                   hover:shadow-[0_0_15px_var(--grad-start)]
@@ -124,7 +353,7 @@ const Contact = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

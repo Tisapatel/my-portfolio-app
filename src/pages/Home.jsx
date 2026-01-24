@@ -9,20 +9,37 @@ import Contact from '../sections/Contact'
 import Education from '../sections/Education'
 import TopProject from '../sections/TopProject'
 
-
-
 const Home = () => {
   return (
     <>
-    <Hero />
-    <About />
-    <Education />
-    {/* <TopProject /> */}
-    {/* <Marquee /> */}
-    <Skills />
-    <Projects />
-    <Contact />
-    {/* <CTA /> */}
+      <section id="home">
+        <Hero />
+      </section>
+      
+      <section id="about">
+        <About />
+      </section>
+      
+      <section id="education">
+        <Education />
+      </section>
+      
+      {/* <TopProject /> */}
+      {/* <Marquee /> */}
+      
+      <section id="skills">
+        <Skills />
+      </section>
+      
+      <section id="projects">
+        <Projects />
+      </section>
+      
+      <section id="contact">
+        <Contact />
+      </section>
+      
+      {/* <CTA /> */}
     </>
   )
 }
