@@ -12,10 +12,13 @@
   "dependencies": {
     "@fontsource/inter": "^5.2.8",
     "@fontsource/syne": "^5.2.7",
+    "@gsap/react": "^2.1.2",
     "@tailwindcss/vite": "^4.1.18",
+    "gsap": "^3.14.2",
     "lucide-react": "^0.562.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "split-type": "^0.3.4",
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {

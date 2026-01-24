@@ -1,9 +1,13 @@
 import React from "react";
 import aboutImg from "../assets/images/about.jpeg"; 
+import GradientButton from "../components/GradientButton";
 
 const About = () => {
+
+  
+  
   return (
-    <section className="min-h-screen bg-white rounded-tl-[60px] flex items-center">
+    <section className="relative z-20 min-h-screen bg-white rounded-tl-[60px] flex items-center">
       <div className="main-container grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-12">
 
         {/* LEFT IMAGE */}
@@ -29,8 +33,11 @@ const About = () => {
             {/* <br /><br /> */}
             From frontend
             experiences to backend logic, I enjoy turning ideas into real,
-            usable products.
-          </p>
+            usable products.    
+          </p>  
+
+          {/* <GradientButton text="Resume" link="" className="btn-light" /> */}
+          
         </div>
 
       </div>

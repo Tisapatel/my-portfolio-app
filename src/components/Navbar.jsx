@@ -1,16 +1,39 @@
-import React from "react";
+import React,{ useRef } from "react";
 import Logo from "../assets/images/logo.png";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react"
+
+
+gsap.registerPlugin(useGSAP);
+ 
+
 
 const Navbar = () => {
+
+   const navbarRef = useRef(null)
+
+  //  gsap hooks
+
+  useGSAP(()=>{
+     gsap.from(navbarRef.current, {
+       opacity : 0,
+       y: -100,
+       duration : 0.6
+     })
+  }
+);
+
+
+
   return (
-    <nav className="fixed top-0 left-0 w-full z-50">
+    <nav ref={navbarRef} className="fixed top-0 w-full mix-blend-difference z-30">
       <div className="main-container py-4 flex justify-between items-center">
 
         {/* Logo */}
         <img
           src={Logo}
           alt="Logo"
-          className="h-[64px] sm:h-[72px] lg:h-[56px] w-auto select-none"
+          className="h-[80px] sm:h-[90px] md:h-[95px] lg:h-[100px] w-auto select-none"
           draggable="false"
         />
 

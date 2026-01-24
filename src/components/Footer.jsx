@@ -15,12 +15,12 @@ const Footer = () => {
           <img
             src={Logo}
             alt="Logo"
-            className="h-12 md:h-16 object-contain mb-4"
+            className="h-[80px] sm:h-[90px] md:h-[95px] lg:h-[100px] w-auto object-contain mb-6"
           />
-          <p className="text-gray-400 max-w-xs">
+          {/* <p className="text-gray-400 max-w-xs">
             Creating modern, responsive and beautiful web experiences using
             React, Tailwind & modern UI design.
-          </p>
+          </p> */}
         </div>
 
         {/* SERVICES */}

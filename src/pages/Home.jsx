@@ -7,6 +7,7 @@ import Marquee from '../sections/marquee'
 import CTA from '../components/CTA'
 import Contact from '../sections/Contact'
 import Education from '../sections/Education'
+import TopProject from '../sections/TopProject'
 
 
 
@@ -16,6 +17,7 @@ const Home = () => {
     <Hero />
     <About />
     <Education />
+    {/* <TopProject /> */}
     {/* <Marquee /> */}
     <Skills />
     <Projects />
