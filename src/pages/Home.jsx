@@ -3,11 +3,9 @@ import Hero from '../sections/Hero'
 import About from '../sections/About'
 import Skills from '../sections/Skills'
 import Projects from '../sections/Projects'
-import Marquee from '../sections/marquee'
-import CTA from '../components/CTA'
 import Contact from '../sections/Contact'
 import Education from '../sections/Education'
-import TopProject from '../sections/TopProject'
+
 
 const Home = () => {
   return (
@@ -24,8 +22,7 @@ const Home = () => {
         <Education />
       </section>
       
-      {/* <TopProject /> */}
-      {/* <Marquee /> */}
+   
       
       <section id="skills">
         <Skills />
@@ -39,7 +36,7 @@ const Home = () => {
         <Contact />
       </section>
       
-      {/* <CTA /> */}
+      
     </>
   )
 }
