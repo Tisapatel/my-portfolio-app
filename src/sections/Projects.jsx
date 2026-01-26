@@ -16,7 +16,7 @@ const Projects = () => {
     useGSAP(() => {
         const ctx = gsap.context(() => {
             
-            // 🎯 Heading animation with char split
+            //  Heading animation with char split
             const headingText = new SplitType(".projects-heading", { types: "chars" });
             
             gsap.fromTo(
@@ -41,7 +41,7 @@ const Projects = () => {
                 }
             );
 
-            // 📝 Description animation
+            //  Description animation
             gsap.fromTo(
                 ".projects-description",
                 { 
@@ -62,7 +62,7 @@ const Projects = () => {
                 }
             );
 
-            // 🔘 Button animation
+            //  Button animation
             gsap.fromTo(
                 ".projects-btn",
                 { 
@@ -85,7 +85,7 @@ const Projects = () => {
                 }
             );
 
-            // 🎬 Horizontal scroll animation
+            //  Horizontal scroll animation
             const scrollContainer = scrollContainerRef.current;
             if (scrollContainer && window.innerWidth > 768) {
                 const scrollWidth = scrollContainer.scrollWidth - scrollContainer.clientWidth;
@@ -105,7 +105,7 @@ const Projects = () => {
                 });
             }
 
-            // 🖼️ Project cards animation
+            //  Project cards animation
             gsap.fromTo(
                 ".project-card",
                 { 
@@ -128,7 +128,7 @@ const Projects = () => {
                 }
             );
 
-            // ✨ Project image parallax on hover (individual cards)
+            //  Project image parallax on hover (individual cards)
             const cards = document.querySelectorAll('.project-card');
             cards.forEach(card => {
                 const img = card.querySelector('img');
