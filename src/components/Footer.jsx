@@ -247,39 +247,52 @@ const Footer = () => {
           />
         </div>
 
-        {/* SERVICES */}
+        {/* NAVIGATION */}
         <div className="footer-column">
-          <h5 className="footer-heading font-medium mb-5">Services</h5>
+          <h5 className="footer-heading font-medium mb-5">Navigation</h5>
           <ul className="flex flex-col gap-2 text-base lg:text-lg text-gray-400">
             <li className="footer-link">
-              <a className="hover:text-[var(--grad-start)] transition" href="#">
-                Web Development
+              <a className="hover:text-[var(--grad-start)] transition" href="#home">
+                Home
               </a>
             </li>
             <li className="footer-link">
-              <a className="hover:text-[var(--grad-start)] transition" href="#">
-                Full Stack
+              <a className="hover:text-[var(--grad-start)] transition" href="#about">
+                About
               </a>
             </li>
             <li className="footer-link">
-              <a className="hover:text-[var(--grad-start)] transition" href="#">
-                UI/UX Design
+              <a className="hover:text-[var(--grad-start)] transition" href="#skills">
+                Skills
               </a>
             </li>
             <li className="footer-link">
-              <a className="hover:text-[var(--grad-start)] transition" href="#">
-                Portfolio Websites
+              <a className="hover:text-[var(--grad-start)] transition" href="#education">
+                Education
+              </a>
+            </li>
+            <li className="footer-link">
+              <a className="hover:text-[var(--grad-start)] transition" href="#projects">
+                Projects
+              </a>
+            </li>
+            <li className="footer-link">
+              <a className="hover:text-[var(--grad-start)] transition" href="#contact">
+                Contact
               </a>
             </li>
           </ul>
         </div>
 
-        {/* ACCESSIBILITY */}
+        {/* TECH STACK */}
         <div className="footer-column">
-          <h5 className="footer-heading font-medium mb-5">Accessibility</h5>
+          <h5 className="footer-heading font-medium mb-5">Tech Stack</h5>
           <ul className="flex flex-col gap-2 text-base lg:text-lg text-gray-400">
-            <li className="footer-link">Mon–Fri : 9:00 AM – 5:00 PM</li>
-            <li className="footer-link">24/7 WhatsApp & Email Support</li>
+            <li className="footer-link">React.js</li>
+            <li className="footer-link">Node.js & Express</li>
+            <li className="footer-link">MongoDB</li>
+            <li className="footer-link">Tailwind CSS</li>
+            <li className="footer-link">GSAP Animations</li>
           </ul>
         </div>
 
@@ -303,6 +316,9 @@ const Footer = () => {
                 +91 87992 44003
               </a>
             </li>
+            <li className="footer-link mt-2 text-sm">
+              Available for freelance work
+            </li>
           </ul>
         </div>
 
@@ -315,7 +331,7 @@ const Footer = () => {
       <div className="main-container grid grid-cols-1 md:grid-cols-2 gap-4 py-6 lg:py-8 text-center md:text-left">
         
         <div className="footer-copyright text-base lg:text-lg text-gray-400">
-          © 2026 Tisa Patel | Frontend Developer. All Rights Reserved.
+          © 2026 Tisa Patel | MERN Stack Developer. All Rights Reserved.
         </div>
 
         {/* SOCIAL ICONS */}
@@ -323,7 +339,7 @@ const Footer = () => {
         <div className="footer-social-icons flex flex-wrap gap-4 justify-center md:justify-end">
           {[
             { Icon: Github, link: "https://github.com/Tisapatel" },
-            { Icon: Mail, link: "https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox" },
+            { Icon: Mail, link: "mailto:tisa1204@gmail.com" },
             { Icon: Linkedin, link: "https://www.linkedin.com/in/tisa-patel-384b80312/" },
             { Icon: Facebook, link: "https://facebook.com/yourusername" },
             { Icon: Instagram, link: "https://www.instagram.com/tissaa.004" },
@@ -332,6 +348,7 @@ const Footer = () => {
               key={i}
               href={link}
               target="_blank"
+              rel="noopener noreferrer"
               className="footer-social-icon w-10 h-10 flex items-center justify-center rounded-xl 
               bg-white/5 border border-white/10 text-gray-300
               hover:text-[var(--grad-start)]

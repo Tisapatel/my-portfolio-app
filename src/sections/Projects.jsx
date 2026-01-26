@@ -196,7 +196,10 @@ const Projects = () => {
                 <div className="main-container pb-8 lg:pb-12 flex max-md:flex-col gap-6 justify-between items-start md:items-end">
                     <div className="max-w-xl">
                         <h3 className='projects-heading mb-3 text-3xl lg:text-5xl font-bold'>Selected Work</h3>
-                        <p className='projects-description text-lg lg:text-xl'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores, aperiam.</p>
+                        <p className='projects-description text-lg lg:text-xl text-gray-700'>
+                            A collection of my recent projects showcasing modern web development, 
+                            creative design, and seamless user experiences across various technologies.
+                        </p>
                     </div>
                     <div className="projects-btn">
                         <GradientButton text="Explore All" link="" className='btn-light' />
