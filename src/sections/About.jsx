@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
-import aboutImg from "../assets/images/about.jpeg"; 
-import GradientButton from "../components/GradientButton";
+import aboutImg from "../assets/images/about.jpeg";
 import { Download } from "lucide-react";
 
 import gsap from "gsap";
@@ -15,15 +14,10 @@ const About = () => {
 
   useGSAP(() => {
     const ctx = gsap.context(() => {
-      
-      // 🖼️ Image animation - left se slide in with scale
+      // 🖼️ Image animation
       gsap.fromTo(
         ".about-img",
-        { 
-          x: -100, 
-          opacity: 0,
-          scale: 0.8
-        },
+        { x: -100, opacity: 0, scale: 0.8 },
         {
           x: 0,
           opacity: 1,
@@ -33,19 +27,15 @@ const About = () => {
           scrollTrigger: {
             trigger: ".about-img",
             start: "top 80%",
-            end: "top 40%",
-            toggleActions: "play none none reverse"
-          }
+            toggleActions: "play none none reverse",
+          },
         }
       );
 
-      // 📝 Heading animation - fade in from bottom
+      // 📝 Heading animation
       gsap.fromTo(
         ".about-heading",
-        { 
-          y: 50, 
-          opacity: 0 
-        },
+        { y: 50, opacity: 0 },
         {
           y: 0,
           opacity: 1,
@@ -54,29 +44,24 @@ const About = () => {
           scrollTrigger: {
             trigger: ".about-heading",
             start: "top 85%",
-            end: "top 50%",
-            toggleActions: "play none none reverse"
-          }
+            toggleActions: "play none none reverse",
+          },
         }
       );
 
-      // 📄 Paragraph animation - stagger lines with proper overflow handling
+      // 📄 Paragraph animation (line stagger)
       const aboutText = new SplitType(".about-text", { types: "lines" });
-      
-      // Wrap each line in a div for proper overflow control
-      aboutText.lines.forEach(line => {
-        const wrapper = document.createElement('div');
-        wrapper.style.overflow = 'hidden';
+
+      aboutText.lines.forEach((line) => {
+        const wrapper = document.createElement("div");
+        wrapper.style.overflow = "hidden";
         line.parentNode.insertBefore(wrapper, line);
         wrapper.appendChild(line);
       });
-      
+
       gsap.fromTo(
         aboutText.lines,
-        { 
-          y: 30, 
-          opacity: 0 
-        },
+        { y: 30, opacity: 0 },
         {
           y: 0,
           opacity: 1,
@@ -87,19 +72,15 @@ const About = () => {
           scrollTrigger: {
             trigger: ".about-text",
             start: "top 85%",
-            end: "top 50%",
-            toggleActions: "play none none reverse"
-          }
+            toggleActions: "play none none reverse",
+          },
         }
       );
 
       // 🎯 Button animation
       gsap.fromTo(
         ".resume-btn",
-        { 
-          y: 30, 
-          opacity: 0 
-        },
+        { y: 30, opacity: 0 },
         {
           y: 0,
           opacity: 1,
@@ -109,9 +90,8 @@ const About = () => {
           scrollTrigger: {
             trigger: ".resume-btn",
             start: "top 90%",
-            end: "top 60%",
-            toggleActions: "play none none reverse"
-          }
+            toggleActions: "play none none reverse",
+          },
         }
       );
 
@@ -124,13 +104,12 @@ const About = () => {
   }, []);
 
   return (
-    <section 
+    <section
       ref={aboutRef}
       id="about"
       className="relative z-30 min-h-screen bg-white rounded-tl-[60px] flex items-center"
     >
       <div className="main-container grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-12 lg:py-16">
-
         {/* LEFT IMAGE */}
         <div className="flex justify-center lg:justify-start">
           <img
@@ -147,21 +126,20 @@ const About = () => {
             About Me
           </h2>
 
-          {/* Text container with proper overflow handling */}
           <div className="overflow-hidden mb-8">
             <p className="about-text text-lg sm:text-xl lg:text-2xl leading-relaxed text-gray-700">
               I'm Tisa Patel, a MERN Stack Developer who loves building modern,
               scalable and user-friendly web applications. I focus on clean UI,
-              performance and writing maintainable code.
-              From frontend experiences to backend logic, I enjoy turning ideas into real,
-              usable products.    
+              performance and writing maintainable code. From frontend
+              experiences to backend logic, I enjoy turning ideas into real,
+              usable products.
             </p>
           </div>
 
-          {/* Resume Button */}
-          <a 
-            href="/resume.pdf" 
-            download="Tisa_Patel_Resume.pdf"
+          {/* RESUME DOWNLOAD BUTTON */}
+          <a
+            href="/Tisa_Patel_Resume.pdf"
+            download
             className="resume-btn inline-flex items-center gap-2 px-8 py-3 text-lg font-semibold
                      border-2 border-black text-black
                      hover:bg-black hover:text-white
@@ -171,9 +149,7 @@ const About = () => {
             <Download className="w-5 h-5 group-hover:animate-bounce" />
             <span>Download Resume</span>
           </a>
-          
         </div>
-
       </div>
     </section>
   );
