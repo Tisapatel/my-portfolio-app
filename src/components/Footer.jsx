@@ -308,14 +308,6 @@ const Footer = () => {
                 tisa1204@gmail.com
               </a>
             </li>
-            <li className="footer-link">
-              <a
-                className="hover:text-[var(--grad-start)] transition"
-                href="tel:8799244003"
-              >
-                +91 87992 44003
-              </a>
-            </li>
             <li className="footer-link mt-2 text-sm">
               Available for freelance work
             </li>
@@ -365,5 +357,6 @@ const Footer = () => {
     </div>
   );
 };
+
 
 export default Footer;
